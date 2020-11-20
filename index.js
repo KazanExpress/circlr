@@ -60,7 +60,7 @@ Rotation.prototype.start = function (n) {
   this.el.style.width = '100%';
 
   for (var i = 0, len = children.length; i < len; i++) {
-    children[i].style.display = 'none';
+    children[i].style.opacity = 0;
     children[i].style.width = '100%';
   }
 
@@ -101,8 +101,8 @@ Rotation.prototype.show = function (n) {
   var len = children.length;
   if (n < 0) n = this._cycle ? n + len : 0;
   if (n > len - 1) n = this._cycle ? n - len : len - 1;
-  children[this.current].style.display = 'none';
-  children[n].style.display = 'block';
+  children[this.current].style.opacity = 0;
+  children[n].style.opacity = 1;
   if (n !== this.current) this.emit('show', n, len);
   this.current = n;
   return this;
